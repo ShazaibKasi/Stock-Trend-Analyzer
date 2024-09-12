@@ -30,21 +30,20 @@ def plot_graph(figsize, values, full_data, extra_data = 0, extra_dataset = None)
         plt.plot(extra_dataset)
     return fig
 
-st.subheader('Original Close Price and MA for 250 days')
-tesla_data['MA_for_250_days'] = tesla_data.Close.rolling(250).mean()
-st.pyplot(plot_graph((15,6), tesla_data['MA_for_250_days'],tesla_data,0))
-
-st.subheader('Original Close Price and MA for 200 days')
-tesla_data['MA_for_200_days'] = tesla_data.Close.rolling(200).mean()
-st.pyplot(plot_graph((15,6), tesla_data['MA_for_200_days'],tesla_data,0))
-
 st.subheader('Original Close Price and MA for 100 days')
 tesla_data['MA_for_100_days'] = tesla_data.Close.rolling(100).mean()
 st.pyplot(plot_graph((15,6), tesla_data['MA_for_100_days'],tesla_data,0))
 
-st.subheader('Original Close Price and MA for 100 days and MA for 250 days')
-st.pyplot(plot_graph((15,6), tesla_data['MA_for_100_days'],tesla_data,1,tesla_data['MA_for_250_days']))
+st.subheader('Original Close Price and MA for 50 days')
+tesla_data['MA_for_50_days'] = tesla_data.Close.rolling(50).mean()
+st.pyplot(plot_graph((15,6), tesla_data['MA_for_50_days'],tesla_data,0))
 
+st.subheader('Original Close Price and MA for 30 days')
+tesla_data['MA_for_30_days'] = tesla_data.Close.rolling(30).mean()
+st.pyplot(plot_graph((15,6), tesla_data['MA_for_30_days'],tesla_data,0))
+
+st.subheader('Original Close Price and MA for 100 days and MA for 50 days')
+st.pyplot(plot_graph((15,6), tesla_data['MA_for_100_days'],tesla_data,1,tesla_data['MA_for_50_days']))
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler(feature_range=(0,1))
